@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:volunteers_project/constants.dart';
 import 'package:volunteers_project/models/opportunity.dart';
 
+import 'package:timeago/timeago.dart' as timeago;
+
 class OpportunityCard extends StatelessWidget {
   final Opportunity opportunity;
 
@@ -33,8 +35,8 @@ class OpportunityCard extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(stops: [
-                      .5,
-                      1
+                      0.5,
+                      1.0
                     ], colors: [
                       Colors.transparent,
                       Colors.black.withOpacity(.9)
@@ -44,15 +46,18 @@ class OpportunityCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(kDefaultMargin),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        opportunity.uploadedTimestamp.toString(),
+                        timeago.format(opportunity.uploadedTimestamp),
                         style: Theme.of(context)
                             .textTheme
                             .subtitle2
                             .copyWith(color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: kDefaultMargin / 4,
                       ),
                       Text(
                         opportunity.name,
@@ -62,6 +67,23 @@ class OpportunityCard extends StatelessWidget {
                             .copyWith(color: Colors.white),
                       )
                     ],
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: EdgeInsets.all(kDefaultMargin),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
+                            text: '${opportunity.currentCount}',
+                          ),
+                          TextSpan(text: '/ ${opportunity.requiredCount}')
+                        ],
+                      ),
+                    ),
                   ),
                 )
               ],
@@ -73,8 +95,17 @@ class OpportunityCard extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                    child: Icon(false ? Icons.star : Icons.star_border, color: Colors.yellow[700],)),
-                Expanded(child: Icon(Icons.comment_outlined, color: Colors.blue[700],),),
+                  child: Icon(
+                    false ? Icons.star : Icons.star_border,
+                    color: Colors.yellow[700],
+                  ),
+                ),
+                Expanded(
+                  child: Icon(
+                    Icons.comment_outlined,
+                    color: Colors.blue[700],
+                  ),
+                ),
                 Expanded(
                   child: Center(
                     child: Container(
