@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:volunteers_project/models/opportunity.dart';
-import 'package:volunteers_project/widgets/opportunity_card.dart';
+import 'package:volunteers_project/screens/opportunities/components/opportunity_card.dart';
 
 class OpportunitiesScreen extends StatelessWidget {
   final List<Opportunity> opportunities = [

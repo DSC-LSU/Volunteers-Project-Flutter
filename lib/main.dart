@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:volunteers_project/screens/opportunities_screen.dart';
+import 'package:volunteers_project/screens/volunteers/volunteers_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primaryColor: Colors.cyan,
-        accentColor: Colors.red
+        accentColor: Colors.redAccent
       ),
-      home: OpportunitiesScreen(),
+      home: VolunteersScreen(),
     );
   }
 }
