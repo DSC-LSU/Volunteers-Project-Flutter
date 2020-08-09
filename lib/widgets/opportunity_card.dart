@@ -77,10 +77,19 @@ class OpportunityCard extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline4
+                                .copyWith(color: Colors.white),
                             text: '${opportunity.currentCount}',
                           ),
-                          TextSpan(text: '/ ${opportunity.requiredCount}')
+                          TextSpan(
+                            text: '/ ${opportunity.requiredCount}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2
+                                .copyWith(color: Colors.white),
+                          )
                         ],
                       ),
                     ),
