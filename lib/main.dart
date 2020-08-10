@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:volunteers_project/screens/opportunities/opportunities_screen.dart';
 import 'package:volunteers_project/screens/volunteers/volunteers_screen.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.cyan,
         accentColor: Colors.redAccent
       ),
-      home: VolunteersScreen(),
+      home: OpportunitiesScreen(),
     );
   }
 }
