@@ -9,6 +9,9 @@ class OpportunitiesScreen extends StatelessWidget {
         name: 'Hospital',
         currentCount: 14,
         requiredCount: 25,
+        numHoursPerDay: 4,
+        numDaysPerWeek: 2,
+        numWeeks: -1,
         uploadedTimestamp: DateTime(2020, 7, 30),
         imageUrl:
             'https://images.unsplash.com/photo-1588623358844-fd118c056dfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
@@ -16,6 +19,9 @@ class OpportunitiesScreen extends StatelessWidget {
         name: 'Dog Shelter',
         currentCount: 14,
         requiredCount: 25,
+        numHoursPerDay: 5,
+        numDaysPerWeek: 1,
+        numWeeks: 1,
         uploadedTimestamp: DateTime(2020, 7, 30),
         imageUrl:
             'https://images.unsplash.com/photo-1494947665470-20322015e3a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
@@ -23,6 +29,9 @@ class OpportunitiesScreen extends StatelessWidget {
         name: 'Airport',
         currentCount: 14,
         requiredCount: 25,
+        numHoursPerDay: 1,
+        numDaysPerWeek: 5,
+        numWeeks: -1,
         uploadedTimestamp: DateTime(2020, 7, 30),
         imageUrl:
             'https://images.unsplash.com/photo-1561101904-da649fcbf03f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')

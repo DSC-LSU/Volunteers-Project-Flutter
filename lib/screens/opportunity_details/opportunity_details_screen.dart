@@ -4,6 +4,7 @@ import 'package:volunteers_project/models/opportunity.dart';
 import 'package:volunteers_project/screens/opportunities/components/gradient_image.dart';
 import 'package:volunteers_project/screens/opportunities/components/opportunity_card.dart';
 import 'package:volunteers_project/screens/opportunities/opportunities_screen.dart';
+import 'package:volunteers_project/screens/opportunity_details/components/opportunity_summary.dart';
 import 'package:volunteers_project/screens/volunteers/components/volunteer_card.dart';
 import 'package:volunteers_project/screens/volunteers/volunteers_screen.dart';
 
@@ -27,7 +28,10 @@ class OpportunityDetailsScreen extends StatelessWidget {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     opportunity.name,
-                    style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.white),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5
+                        .copyWith(color: Colors.white),
                   ),
                   background: GradientImage(
                     imageUrl: opportunity.imageUrl,
@@ -53,13 +57,17 @@ class OpportunityDetailsScreen extends StatelessWidget {
                 ),
                 pinned: true,
               ),
+              // SliverList(
+              //   delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+              //   return VolunteerCard(VolunteersScreen.volunteers[index]);
+              // }, childCount: VolunteersScreen.volunteers.length),)
             ];
           },
           // body: Center(child: Text(opportunity.name)),
           body: SafeArea(
             child: TabBarView(
               children: [
-                Icon(Icons.info),
+                OpportunitySummary(opportunity: opportunity),
                 ListView.builder(
                   itemBuilder: (context, index) {
                     return VolunteerCard(VolunteersScreen.volunteers[index]);
@@ -80,6 +88,7 @@ class OpportunityDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
+          // body: Center(child: Text('ABC'),),
         ),
       ),
     );
