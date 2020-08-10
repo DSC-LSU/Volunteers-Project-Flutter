@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:volunteers_project/constants.dart';
 import 'package:volunteers_project/models/opportunity.dart';
+import 'package:volunteers_project/screens/opportunities/components/gradient_image.dart';
+import 'package:volunteers_project/screens/opportunities/components/opportunity_card.dart';
+import 'package:volunteers_project/screens/opportunities/opportunities_screen.dart';
+import 'package:volunteers_project/screens/volunteers/components/volunteer_card.dart';
+import 'package:volunteers_project/screens/volunteers/volunteers_screen.dart';
 
 class OpportunityDetailsScreen extends StatelessWidget {
   final Opportunity opportunity;
 
-  const OpportunityDetailsScreen({@required this.opportunity});
+  OpportunityDetailsScreen({@required this.opportunity});
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +25,14 @@ class OpportunityDetailsScreen extends StatelessWidget {
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(opportunity.name),
-                  background: Image.network(opportunity.imageUrl),
+                  title: Text(
+                    opportunity.name,
+                    style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.white),
+                  ),
+                  background: GradientImage(
+                    imageUrl: opportunity.imageUrl,
+                  ),
                 ),
-                // bottom: TabBar(
-                //   labelColor: Colors.black87,
-                //   unselectedLabelColor: Colors.grey,
-                //   tabs: [
-                //     Tab(
-                //       icon: Icon(Icons.info),
-                //       text: 'Tab 1',
-                //     ),
-                //     Tab(
-                //       icon: Icon(Icons.lightbulb_outline),
-                //       text: 'Tab 2',
-                //     )
-                //   ],
-                // ),
               ),
               SliverPersistentHeader(
                 delegate: _SliverAppBarDelegate(
@@ -46,11 +42,11 @@ class OpportunityDetailsScreen extends StatelessWidget {
                     tabs: [
                       Tab(
                         icon: Icon(Icons.info),
-                        text: 'Tab 1',
+                        text: 'Summary',
                       ),
                       Tab(
-                        icon: Icon(Icons.lightbulb_outline),
-                        text: 'Tab 2',
+                        icon: Icon(Icons.supervised_user_circle),
+                        text: 'Volunteers',
                       )
                     ],
                   ),
@@ -59,7 +55,31 @@ class OpportunityDetailsScreen extends StatelessWidget {
               ),
             ];
           },
-          body: Text(opportunity.name),
+          // body: Center(child: Text(opportunity.name)),
+          body: SafeArea(
+            child: TabBarView(
+              children: [
+                Icon(Icons.info),
+                ListView.builder(
+                  itemBuilder: (context, index) {
+                    return VolunteerCard(VolunteersScreen.volunteers[index]);
+                  },
+                  itemCount: VolunteersScreen.volunteers.length,
+                )
+                // ListView(
+                //   children: [
+                //     VolunteerCard(VolunteersScreen.volunteers[0])
+                //   ],
+                // )
+                // ListView.builder(
+                //   itemBuilder: (context, index) {
+                //     return OpportunityCard(
+                //         OpportunitiesScreen.opportunities[index]);
+                //   },
+                // )
+              ],
+            ),
+          ),
         ),
       ),
     );

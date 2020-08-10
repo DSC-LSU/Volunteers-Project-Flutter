@@ -4,7 +4,7 @@ import 'package:volunteers_project/models/volunteer.dart';
 import 'components/body.dart';
 
 class VolunteersScreen extends StatelessWidget {
-  final List<Volunteer> volunteers = [
+  static final List<Volunteer> volunteers = [
     Volunteer(
       id: 'dbaksdkakshd',
       name: 'Simon',

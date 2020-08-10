@@ -3,7 +3,7 @@ import 'package:volunteers_project/models/opportunity.dart';
 import 'package:volunteers_project/screens/opportunities/components/opportunity_card.dart';
 
 class OpportunitiesScreen extends StatelessWidget {
-  final List<Opportunity> opportunities = [
+  static final List<Opportunity> opportunities = [
     Opportunity(
         id: 'adnaksjdnkjsd',
         name: 'Hospital',
@@ -32,7 +32,7 @@ class OpportunitiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Opportunities'),
+        title: Text('Opportunities', style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.white)),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {

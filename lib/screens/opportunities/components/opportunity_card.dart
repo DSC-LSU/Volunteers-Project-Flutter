@@ -3,6 +3,7 @@ import 'package:volunteers_project/constants.dart';
 import 'package:volunteers_project/models/opportunity.dart';
 
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:volunteers_project/screens/opportunities/components/gradient_image.dart';
 import 'package:volunteers_project/screens/opportunity_details/opportunity_details_screen.dart';
 
 class OpportunityCard extends StatelessWidget {
@@ -30,32 +31,9 @@ class OpportunityCard extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: kDefaultBorderRadius,
-                      image: DecorationImage(
-                        image: NetworkImage(opportunity.imageUrl),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          stops: [
-                            0.5,
-                            1.0
-                          ],
-                          colors: [
-                            Colors.transparent,
-                            Colors.black.withOpacity(.9)
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter),
-                    ),
-                  ),
+              child: GradientImage(
+                imageUrl: opportunity.imageUrl,
+                stackChildren: [
                   Container(
                     padding: EdgeInsets.all(kDefaultMargin),
                     child: Column(
