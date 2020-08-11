@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:volunteers_project/models/opportunity.dart';
+import 'package:volunteers_project/screens/add_opportunity/add_opportunity_screen.dart';
 import 'package:volunteers_project/screens/opportunities/components/opportunity_card.dart';
 
 class OpportunitiesScreen extends StatelessWidget {
@@ -41,13 +42,24 @@ class OpportunitiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Opportunities', style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.white)),
+        title: Text(
+          'Opportunities',
+          style: Theme.of(context)
+              .textTheme
+              .headline5
+              .copyWith(color: Colors.white),
+        ),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
           return OpportunityCard(opportunities[index]);
         },
         itemCount: opportunities.length,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => AddOpportunityScreen())),
       ),
     );
   }
